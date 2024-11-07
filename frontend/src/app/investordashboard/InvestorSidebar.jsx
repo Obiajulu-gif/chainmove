@@ -40,7 +40,7 @@ const InvestorSidebar = () => {
 						animate={{ opacity: 1 }}
 						transition={{ delay: 0.2 }}
 					>
-						{isSidebarOpen && "Blockride"}
+						{isSidebarOpen && "ChainMove"}
 					</motion.h2>
 				</Link>
 
@@ -84,7 +84,7 @@ const InvestorSidebar = () => {
 						<div className="flex items-center space-x-4">
 							<FaUserTie className="text-2xl" />
 							{isSidebarOpen && (
-								<span className="text-lg font-medium">BlockRide DAO</span>
+								<span className="text-lg font-medium">ChainMove DAO</span>
 							)}
 						</div>
 						{isSidebarOpen && (

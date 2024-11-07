@@ -41,19 +41,19 @@ const FAQSection = () => {
 						{/* FAQ Items */}
 						{[
 							{
-								question: "How does BlockRide ensure secure transactions?",
+								question: "How does ChainMove ensure secure transactions?",
 								answer:
-									"BlockRide uses blockchain technology to provide secure and transparent transactions. All payments are managed through smart contracts, ensuring a secure environment for all users.",
+									"ChainMove uses blockchain technology to provide secure and transparent transactions. All payments are managed through smart contracts, ensuring a secure environment for all users.",
 							},
 							{
-								question: "Can anyone list their vehicle on BlockRide?",
+								question: "Can anyone list their vehicle on ChainMove?",
 								answer:
-									"Yes, BlockRide allows verified users to list their vehicles for rental. Each listing goes through a quick verification process to ensure quality and safety.",
+									"Yes, ChainMove allows verified users to list their vehicles for rental. Each listing goes through a quick verification process to ensure quality and safety.",
 							},
 							{
 								question: "What are the benefits of ride-sharing?",
 								answer:
-									"Ride-sharing with BlockRide is cost-effective and eco-friendly, allowing you to share costs with other riders while reducing carbon emissions.",
+									"Ride-sharing with ChainMove is cost-effective and eco-friendly, allowing you to share costs with other riders while reducing carbon emissions.",
 							},
 						].map((faq, index) => (
 							<div

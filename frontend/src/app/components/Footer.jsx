@@ -37,7 +37,7 @@ const Footer = () => {
 						whileInView={{ opacity: 1 }}
 						transition={{ duration: 1, delay: 0.1 }}
 					>
-						<h2 className="text-2xl font-semibold">Blockride</h2>
+						<h2 className="text-2xl font-semibold">ChainMove</h2>
 						<hr className="border-gray-600 w-full mt-2" />
 					</motion.div>
 
@@ -141,7 +141,7 @@ const Footer = () => {
 					</div>
 
 					{/* Copyright Notice */}
-					<p className="mt-4">&copy; {year} Blockride. All rights reserved.</p>
+					<p className="mt-4">&copy; {year} ChainMove. All rights reserved.</p>
 				</motion.div>
 			</motion.div>
 		</footer>

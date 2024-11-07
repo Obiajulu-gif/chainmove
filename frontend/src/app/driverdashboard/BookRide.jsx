@@ -1,54 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { prepareContractCall, prepareEvent } from "thirdweb";
-import { useContractEvents, useSendTransaction } from "thirdweb/react";
-import { getContract } from "thirdweb";
-import { ethers } from "ethers"; // Import ethers for precise BigInt conversion
-import { liskSepolia } from "src/liskSepolia";
-import { client } from "src/client";
 
-// Initialize contract object
-const contract = getContract({
-  client,
-  address: "0x4d45F8158e252FD8e026cD594a4ec70dCD712562",
-  chain: liskSepolia,
-});
-
-// Prepare the DestinationAdded event
-const preparedEvent = prepareEvent({
-  signature:
-    "event DestinationAdded(address indexed driver, uint256 destinationId, string location, uint256 fare)",
-});
+import React, { useState } from "react";
 
 const BookRide = () => {
-  const { mutate: sendTransaction } = useSendTransaction();
-  const { data: events, error: eventsError } = useContractEvents({
-    contract,
-    events: [preparedEvent],
-    fromBlock: 0, // Fetch events from the first block
-    toBlock: "latest", // Until the latest block
-  });
-  const [destinations, setDestinations] = useState([]);
+  // Mock data for demonstration purposes
+  const [destinations, setDestinations] = useState([
+    { driver: "0x1234...abcd", id: 1, location: "Destination A", fare: 0.05 },
+    { driver: "0x5678...efgh", id: 2, location: "Destination B", fare: 0.07 },
+    { driver: "0x9abc...ijkl", id: 3, location: "Destination C", fare: 0.09 },
+  ]);
   const [selectedDestination, setSelectedDestination] = useState(null);
-
-  // Load destinations from the events
-  useEffect(() => {
-    if (events && events.length > 0) {
-      console.log("Fetched events:", events); // Log all fetched events
-
-      const destinationsList = events
-        .map((event) => {
-          const { driver, destinationId, location, fare } = event.args || {};
-          return driver && destinationId && location && fare
-            ? { driver, id: destinationId, location, fare }
-            : null;
-        })
-        .filter(Boolean); // Filter out any null values
-
-      console.log("Parsed destinations:", destinationsList); // Log parsed destination data
-      setDestinations(destinationsList);
-    }
-  }, [events]);
 
   const handleBookRide = () => {
     if (!selectedDestination) {
@@ -56,48 +17,19 @@ const BookRide = () => {
       return;
     }
 
-    // Convert fare from ETH to Wei using ethers
-    const fareInWei = ethers.parseEther(selectedDestination.fare.toString());
-
     // Log the values to ensure they are correct
     console.log("Selected Destination Details:");
     console.log("Driver Address:", selectedDestination.driver);
     console.log("Destination ID:", selectedDestination.id);
     console.log("Fare in ETH:", selectedDestination.fare);
-    console.log("Fare in Wei:", fareInWei.toString());
 
-    // Prepare transaction with msg.value as fareInWei
-    const transaction = prepareContractCall({
-      contract,
-      method:
-        "function bookRide(address driverAddress, uint256 destinationId) payable",
-      params: [selectedDestination.driver, selectedDestination.id],
-      overrides: {
-        value: fareInWei, // Set msg.value as fare in wei
-      },
-    });
-
-    sendTransaction(transaction, {
-      onSuccess: (result) => {
-        console.log("Ride booked successfully:", result);
-        alert("Ride booked successfully!");
-      },
-      onError: (error) => {
-        console.error("Failed to book ride:", error);
-        alert("Failed to book ride. Please try again.");
-      },
-    });
+    // Mock success message for booking
+    alert("Ride booked successfully!");
   };
 
   return (
     <div className="p-6 bg-gray-900 text-white rounded-lg max-w-md mx-auto mt-8">
       <h2 className="text-2xl font-semibold mb-4">Book a Ride</h2>
-
-      {eventsError && (
-        <p className="text-red-500">
-          Error fetching destinations: {eventsError.message}
-        </p>
-      )}
 
       {/* List of Available Destinations */}
       <div className="mb-6">
@@ -124,15 +56,11 @@ const BookRide = () => {
       </div>
 
       {/* Dropdown to Select Destination */}
-      <label className="block text-sm text-gray-400 mb-2">
-        Select Destination
-      </label>
+      <label className="block text-sm text-gray-400 mb-2">Select Destination</label>
       <select
         onChange={(e) => {
           const selectedId = e.target.value;
-          const selectedDest = destinations.find(
-            (dest) => dest.id.toString() === selectedId
-          );
+          const selectedDest = destinations.find((dest) => dest.id.toString() === selectedId);
           setSelectedDestination(selectedDest);
         }}
         className="w-full p-3 bg-gray-800 rounded-lg text-white mb-4">

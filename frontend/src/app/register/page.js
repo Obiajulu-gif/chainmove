@@ -1,15 +1,10 @@
 "use client";
+
 import Image from "next/image";
-import { FaGoogle, FaTwitter, FaUserAlt, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { liskSepolia } from "src/liskSepolia";
-import { client } from "src/client";
-import { useActiveAccount, useWalletBalance } from "thirdweb/react";
-import { ConnectButton } from "thirdweb/react";
-import { createWallet } from "thirdweb/wallets";
-import { LogoutButton } from "../components/Logout";
+import { useState } from "react";
+import { FaEnvelope, FaGoogle, FaTwitter, FaUserAlt } from "react-icons/fa";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -20,24 +15,10 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
   const [error, setError] = useState(""); // State for error messages
-  const account = useActiveAccount();
-
-  const { data: balance, isLoading: loadBalance } = useWalletBalance({
-    client,
-    chain: liskSepolia,
-    address: account?.address,
-  });
-
-  useEffect(() => {
-    if (account?.address) {
-      console.log("Connected wallet address:", account.address);
-      setWalletAddress(account.address);
-    }
-  }, [account]);
 
   const handleRegister = () => {
     // Ensure all fields are filled
-    if (!fullName || !username || !email || !walletAddress) {
+    if (!fullName || !username || !email) {
       setError("All fields are required!");
       return;
     }
@@ -73,9 +54,8 @@ const RegisterPage = () => {
             Become a Driver
           </h3>
           <p className="text-sm mt-2">
-            Easily share rides and split costs with friends through secure,
-            smart contract transactions, making group travel affordable and
-            eco-friendly.
+            Easily share rides and split costs with friends through secure, smart contract transactions,
+            making group travel affordable and eco-friendly.
           </p>
         </div>
       </div>
@@ -83,9 +63,7 @@ const RegisterPage = () => {
       {/* Right Side - Registration Form */}
       <div className="flex w-full lg:w-1/2 items-center justify-center p-10">
         <div className="max-w-md w-full space-y-6">
-          <h2 className="text-2xl font-bold text-white">
-            Register with your email
-          </h2>
+          <h2 className="text-2xl font-bold text-white">Register with your email</h2>
           <p className="text-gray-400">Sign up to begin your journey</p>
 
           {/* Error Message */}
@@ -125,62 +103,12 @@ const RegisterPage = () => {
               />
             </div>
 
-            <div className="relative">
-              {!account ? (
-                <ConnectButton
-                  client={client}
-                  chain={liskSepolia}
-                  connectButton={{
-                    label: "Connect Wallet",
-                    style: {
-                      width: "100%",
-                      backgroundColor: "#F97316",
-                      color: "white",
-                      borderRadius: "0.375rem",
-                      padding: "0.75rem",
-                      transition: "background-color 0.3s",
-                    },
-                  }}
-                  wallets={[
-                    createWallet("io.metamask"),
-                    createWallet("com.coinbase.wallet"),
-                    createWallet("me.rainbow"),
-                  ]}
-                  onConnect={() => {
-                    console.log("Connected successfully");
-                  }}
-                  onDisconnect={({ account }) => {
-                    console.log("Disconnected", account.address);
-                  }}
-                  connectModal={{
-                    showThirdwebBranding: false,
-                  }}
-                  signInButton={{
-                    className:
-                      "w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition duration-300",
-                  }}
-                />
-              ) : (
-                <div className="flex items-center space-x-4">
-                  <div className="text-white px-4 py-2 bg-gray-800 rounded-lg">
-                    {`${account.address.slice(0, 4)}...${account.address.slice(
-                      -4
-                    )}`} 
-                     connected
-                  </div>
-                  <LogoutButton />
-                </div>
-              )}
-            </div>
-
             {/* Proceed Button */}
-            {account && (
-              <button
-                onClick={handleRegister} // Call handleRegister on click
-                className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition duration-300">
-                Proceed
-              </button>
-            )}
+            <button
+              onClick={handleRegister} // Call handleRegister on click
+              className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition duration-300">
+              Proceed
+            </button>
           </div>
 
           {/* Divider */}
@@ -189,8 +117,6 @@ const RegisterPage = () => {
             <span>Or</span>
             <hr className="w-full border-gray-600" />
           </div>
-
-          
 
           <p className="text-center text-gray-400">
             Already have an account?{" "}

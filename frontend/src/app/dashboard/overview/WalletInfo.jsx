@@ -1,90 +1,37 @@
-// components/dashboard/WalletInfo.js
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { FaEyeSlash } from "react-icons/fa";
-import { getWalletBalance } from "thirdweb/wallets";
-import { useSendTransaction, useReadContract } from "thirdweb/react";
-import { getContract, prepareContractCall } from "thirdweb";
-import { liskSepolia } from "src/liskSepolia";
-import { client } from "src/client";
-import { useActiveAccount } from "thirdweb/react";
-
-// Initialize contract object
-const contract = getContract({
-  client,
-  address: "0x4d45F8158e252FD8e026cD594a4ec70dCD712562",
-  chain: liskSepolia,
-});
 
 const WalletInfo = () => {
-  const account = useActiveAccount();
-  const address = account?.address;
   const [balance, setBalance] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const { mutate: sendTransaction } = useSendTransaction();
+  // Placeholder registration check and registration function
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isCheckingRegistration, setIsCheckingRegistration] = useState(false);
 
-  // Check if the user is registered
-  const { data: isRegistered, isPending: isCheckingRegistration } =
-    useReadContract({
-      contract,
-      method: "function isUser(address) view returns (bool)", // Updated to check for user
-      params: [address],
-    });
-
-  // Register user function
-  const handleRegisterUser = async () => {
-    try {
-      const transaction = prepareContractCall({
-        contract,
-        method: "function registerUser()", // Updated to register user
-        params: [],
-      });
-
-      await sendTransaction(transaction, {
-        onSuccess: (result) => {
-          console.log("User registration confirmed", result);
-          setShowSuccessModal(true);
-        },
-        onError: (error) => {
-          console.error("Registration error", error);
-        },
-      });
-    } catch (error) {
-      console.error("Error preparing registration:", error);
-    }
+  const handleRegisterUser = () => {
+    // Simulate registration success
+    setIsRegistered(true);
+    setShowSuccessModal(true);
   };
 
   useEffect(() => {
-    const fetchBalance = async () => {
-      if (address) {
-        try {
-          const balanceData = await getWalletBalance({
-            address,
-            client,
-            chain: liskSepolia,
-          });
-          setBalance(balanceData);
-        } catch (error) {
-          console.error("Failed to fetch balance:", error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchBalance();
-  }, [address]);
+    // Simulate balance fetching delay
+    setTimeout(() => {
+      setBalance("0.00");
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <div className="flex space-x-4">
       <div className="bg-gray-800 p-4 rounded-lg flex-1 flex items-center justify-between">
         <div>
           <p className="text-gray-400 text-sm">Wallet Balance</p>
-          <h3 className="text-white text-xl font-semibold">
-            {loading ? "Loading..." : `${balance?.displayValue ?? "0.00"} ETH`}
-          </h3>
+          <h3 className="text-white text-xl font-semibold">{loading ? "Loading..." : `${balance} ETH`}</h3>
         </div>
         <FaEyeSlash className="text-gray-500" />
       </div>
@@ -106,15 +53,9 @@ const WalletInfo = () => {
               onClick={handleRegisterUser}
               disabled={isRegistered || isCheckingRegistration}
               className={`${
-                isRegistered
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-orange-500 hover:bg-orange-600"
+                isRegistered ? "bg-gray-500 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600"
               } text-white font-semibold px-4 py-2 rounded-full transition duration-300 text-sm`}>
-              {isRegistered
-                ? "Already Registered"
-                : isCheckingRegistration
-                ? "Checking..."
-                : "Register Now"}
+              {isRegistered ? "Already Registered" : isCheckingRegistration ? "Checking..." : "Register Now"}
             </button>
           )}
         </div>

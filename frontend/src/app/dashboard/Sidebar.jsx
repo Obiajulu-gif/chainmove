@@ -37,7 +37,7 @@ const Sidebar = () => {
     {
       href: "/dashboard/dao",
       icon: <FaUserTie />,
-      label: "BlockRide DAO",
+      label: "ChainMove DAO",
       badge: "Coming Soon",
     },
     { href: "/dashboard/rewards", icon: <FaGift />, label: "Rewards" },
@@ -58,7 +58,7 @@ const Sidebar = () => {
       <div>
         <Link href="/">
           <h2 className="text-3xl font-bold text-orange-500">
-            {isSidebarOpen && "BlockRide"}
+            {isSidebarOpen && "ChainMove"}
           </h2>
         </Link>
 

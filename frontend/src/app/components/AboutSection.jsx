@@ -67,7 +67,7 @@ const AboutSection = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.6, delay: 0.3 }}
 					>
-						What is Blockride?
+						What is ChainMove?
 					</motion.h3>
 
 					<motion.p
@@ -77,9 +77,9 @@ const AboutSection = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.7, delay: 0.4 }}
 					>
-						Blockride is a decentralized car rental and ride-sharing platform
+						ChainMove is a decentralized car rental and ride-sharing platform
 						designed to bring trust, transparency, and flexibility to how you
-						move. Built on the Lisk blockchain, Blockride connects car owners
+						move. Built on the Internet Computer blockchain, ChainMove connects car owners
 						with riders and renters through a secure, smart contract-based
 						environment, eliminating intermediaries and cutting down on fees.
 					</motion.p>
@@ -91,7 +91,7 @@ const AboutSection = () => {
 						viewport={{ once: true }}
 						transition={{ duration: 0.7, delay: 0.5 }}
 					>
-						With Blockride, you can book a ride, rent a car for a few hours or
+						With ChainMove, you can book a ride, rent a car for a few hours or
 						days, or even share trips with friends for more convenient and
 						eco-friendly travel.
 					</motion.p>

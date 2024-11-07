@@ -35,7 +35,7 @@ const DriverSidebar = () => {
 			<div>
 				<Link href="/">
 					<h2 className="text-3xl font-bold text-orange-500">
-						{isSidebarOpen && "BlockRide"}
+						{isSidebarOpen && "ChainMove"}
 					</h2>
 				</Link>
 
@@ -82,7 +82,7 @@ const DriverSidebar = () => {
 						<div className="flex items-center space-x-4">
 							<FaUserTie className="text-2xl" />
 							{isSidebarOpen && (
-								<span className="text-lg font-medium">BlockRide DAO</span>
+								<span className="text-lg font-medium">ChainMove DAO</span>
 							)}
 						</div>
 						{isSidebarOpen && (

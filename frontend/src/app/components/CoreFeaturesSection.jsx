@@ -78,7 +78,7 @@ const CoreFeaturesSection = () => {
 						</h3>
 						<p className="text-gray-300 text-sm">
 							Investors can earn passive income by listing their cars for rent
-							on Blockride, with all payments and terms securely managed
+							on ChainMove, with all payments and terms securely managed
 							on-chain.
 						</p>
 					</motion.div>

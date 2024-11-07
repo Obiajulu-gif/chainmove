@@ -1,22 +1,10 @@
-// components/dashboard/SoloTripBooking.js
 "use client";
-import React, { useState } from "react";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { useSendTransaction } from "thirdweb/react";
-import { getContract } from "thirdweb";
-import { prepareContractCall } from "thirdweb";
-import { liskSepolia } from "src/liskSepolia";
-import { client } from "src/client";
-
-// Initialize contract object for adding destinations
-const contract = getContract({
-  client,
-  address: "0x4d45F8158e252FD8e026cD594a4ec70dCD712562",
-  chain: liskSepolia,
-});
 
 const SoloTripBooking = () => {
   const router = useRouter();
@@ -30,9 +18,8 @@ const SoloTripBooking = () => {
   });
   const [location, setLocation] = useState(""); // For adding new destination
   const [fare, setFare] = useState("");
-  const { mutate: sendTransaction } = useSendTransaction();
 
-  // Mock list of existing destinations (replace with data from your blockchain in production)
+  // Mock list of existing destinations (replace with real data in production)
   const destinations = ["Destination A", "Destination B", "Destination C"];
 
   // Handle input changes for booking form
@@ -52,8 +39,8 @@ const SoloTripBooking = () => {
     }, 1500); // Redirect after 1.5s
   };
 
-  // Handle adding new destination to the blockchain
-  const handleAddDestination = async () => {
+  // Handle adding new destination (mock function)
+  const handleAddDestination = () => {
     if (!location || !fare) {
       alert("Please fill in both the location and fare.");
       return;
@@ -65,29 +52,15 @@ const SoloTripBooking = () => {
       return;
     }
 
-    try {
-      setIsSubmitting(true);
-      const transaction = prepareContractCall({
-        contract,
-        method: "function addDestination(string _location, uint256 _fareInEther)",
-        params: [location, fareInEther],
-      });
-
-      await sendTransaction(transaction, {
-        onSuccess: () => {
-          alert("Destination added successfully!");
-          destinations.push(location); // Update destinations list
-          setLocation("");
-          setFare("");
-        },
-        onError: (error) => {
-          console.error("Error adding destination:", error);
-          alert("Failed to add destination. Please try again.");
-        },
-      });
-    } finally {
+    setIsSubmitting(true);
+    // Simulate adding destination
+    setTimeout(() => {
+      alert("Destination added successfully!");
+      destinations.push(location); // Update destinations list (mock update)
+      setLocation("");
+      setFare("");
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -104,8 +77,7 @@ const SoloTripBooking = () => {
         className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-3xl mx-auto"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
+        transition={{ duration: 0.5, ease: "easeOut" }}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Departure Selection */}
           <div className="relative">
@@ -113,8 +85,7 @@ const SoloTripBooking = () => {
             <select
               name="departure"
               onChange={handleInputChange}
-              className="w-full p-4 pl-14 mt-1 bg-gray-700 rounded-lg text-gray-200"
-            >
+              className="w-full p-4 pl-14 mt-1 bg-gray-700 rounded-lg text-gray-200">
               <option value="">Select Pick-up Location</option>
               <option value="Location A">Location A</option>
               <option value="Location B">Location B</option>
@@ -128,8 +99,7 @@ const SoloTripBooking = () => {
             <select
               name="destination"
               onChange={handleInputChange}
-              className="w-full p-4 pl-14 mt-1 bg-gray-700 rounded-lg text-gray-200"
-            >
+              className="w-full p-4 pl-14 mt-1 bg-gray-700 rounded-lg text-gray-200">
               <option value="">Select Destination</option>
               {destinations.map((dest, index) => (
                 <option key={index} value={dest}>
@@ -146,8 +116,7 @@ const SoloTripBooking = () => {
               name="time"
               value={formData.time}
               onChange={handleInputChange}
-              className="w-full p-4 mt-1 bg-gray-700 rounded-lg text-gray-200"
-            >
+              className="w-full p-4 mt-1 bg-gray-700 rounded-lg text-gray-200">
               <option>08:00 AM</option>
               <option>09:00 AM</option>
               <option>10:00 AM</option>
@@ -175,11 +144,8 @@ const SoloTripBooking = () => {
           onClick={handleSubmit}
           disabled={loading}
           className={`w-full py-4 rounded-full text-lg font-semibold transition duration-300 ${
-            loading
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-orange-500 hover:bg-orange-600"
-          }`}
-        >
+            loading ? "bg-gray-500 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600"
+          }`}>
           {loading ? "Processing..." : "Continue"}
         </motion.button>
       </motion.div>
@@ -212,8 +178,7 @@ const SoloTripBooking = () => {
           disabled={isSubmitting}
           className={`w-full py-3 rounded-lg text-lg font-semibold ${
             isSubmitting ? "bg-gray-600" : "bg-orange-500 hover:bg-orange-600"
-          } transition duration-300`}
-        >
+          } transition duration-300`}>
           {isSubmitting ? "Adding..." : "Add Destination"}
         </button>
       </div>

@@ -46,7 +46,7 @@ const TestimonialsSection = () => {
 					>
 						<FaQuoteLeft className="text-white text-3xl mb-4" />
 						<p className="text-gray-300 mb-6">
-							Blockride is incredibly reliable. I can top up my phone, pay
+							ChainMove is incredibly reliable. I can top up my phone, pay
 							bills, and save money effortlessly.
 						</p>
 						<div className="flex items-center space-x-4">
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
 					>
 						<FaQuoteLeft className="text-white text-3xl mb-4" />
 						<p className="text-gray-300 mb-6">
-							Blockride is incredibly reliable. I can top up my phone, pay
+							ChainMove is incredibly reliable. I can top up my phone, pay
 							bills, and save money effortlessly.
 						</p>
 						<div className="flex items-center space-x-4">
@@ -104,7 +104,7 @@ const TestimonialsSection = () => {
 					>
 						<FaQuoteLeft className="text-white text-3xl mb-4" />
 						<p className="text-gray-300 mb-6">
-							Blockride is incredibly reliable. I can top up my phone, pay
+							ChainMove is incredibly reliable. I can top up my phone, pay
 							bills, and save money effortlessly.
 						</p>
 						<div className="flex items-center space-x-4">
