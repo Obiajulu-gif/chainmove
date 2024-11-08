@@ -4,7 +4,7 @@ Welcome to **ChainMove**, a decentralized, blockchain-powered transportation pla
 
 > **Hackathon Project**: Created for the Internet Computer Hackathon 2023. ChainMove reimagines ride-sharing with decentralization and transparency at its core. 🚀
 
-![ChainMove Logo](./frontend/public/images/blockridelogo.svg)
+![ChainMove Logo](./frontend/public/images/blockridelogo.png)
 
 ## 🌟 Overview
 
