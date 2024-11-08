@@ -1,189 +1,176 @@
-# Fullstack dApp (Motoko + NextJS + Internet Identity)
+# 🚗 ChainMove – Decentralized Transportation on the Internet Computer
 
-This template is designed to easily build applications deployed on ICP using Motoko + Next.js + Internet Identity
+Welcome to **ChainMove**, a decentralized, blockchain-powered transportation platform that brings transparency, efficiency, and security to mobility services. Built on the **Internet Computer**, ChainMove leverages blockchain technology to create a seamless and trusted experience for drivers and passengers alike, ensuring secure payments, driver incentives, and ride transparency.
 
-## Table of Contents
+> **Hackathon Project**: Created for the Internet Computer Hackathon 2023. ChainMove reimagines ride-sharing with decentralization and transparency at its core. 🚀
 
-- [Getting Started](#getting-started)
-  - [In the Cloud](#in-the-cloud)
-  - [Manual Setup](#manual-setup)
+![ChainMove Logo](./frontend/public/images/blockridelogo.svg)
 
-## Getting Started
+## 🌟 Overview
 
-### In the cloud
+ChainMove provides a decentralized platform for booking and managing rides, securely handled through smart contracts on the Internet Computer. With transparent payments and blockchain-based confirmations, riders and drivers can rely on secure, immutable transaction records.
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/adrian-d-hidalgo/motoko-nextjs/?quickstart=1)
+Our platform ensures:
+- **Initial payment security**: Drivers receive an upfront 10% payment upon booking.
+- **Completion incentives**: Remaining payment is sent upon ride confirmation by the passenger.
+- **User authentication**: All users are authenticated via **Internet Identity** for enhanced security.
 
-Create a .env file:
+## 🎯 Key Features
 
-```bash
-cp frontend/.env-codespaces-example frontend/.env
+1. **Decentralized Ride Booking**: Passengers can book rides with secure, blockchain-based payment and confirmations.
+2. **Driver Incentive Structure**: Drivers receive 10% of the fare immediately upon booking, and the remaining 90% upon passenger confirmation.
+3. **Real-time Ride Updates**: Passengers and drivers can view ride status updates via the ChainMove interface.
+4. **Internet Identity Integration**: Users are securely authenticated using Internet Identity, ensuring a safe and seamless experience.
+
+## 🛠️ Technologies Used
+
+ChainMove utilizes a modern technology stack to deliver a robust, decentralized platform on the Internet Computer.
+
+- **Next.js** – Frontend framework for fast, responsive UI and seamless routing.
+- **Motoko** – Backend smart contract language for securely handling ride bookings and payments.
+- **Internet Identity** – Decentralized authentication provided by the Internet Computer for secure user login and identity management.
+- **Tailwind CSS** – A utility-first CSS framework for rapid and flexible UI development.
+
+## 📐 Project Architecture
+
+ChainMove's architecture is composed of:
+
+1. **Frontend**: Built with **Next.js** for client-side routing and a responsive user experience.
+2. **Backend**: **Motoko** smart contracts manage ride bookings, payments, and confirmations on the blockchain.
+3. **Authentication**: **Internet Identity** ensures a decentralized, secure login experience for drivers and passengers.
+4. **Payment Flow**: Funds are transferred based on contract logic—10% to the driver on booking, and 90% upon completion confirmation by the passenger.
+
+## 🚀 Getting Started
+
+To get ChainMove running on your local setup, follow these steps.
+
+### Prerequisites
+
+1. **Node.js** (v14+)
+2. **dfx** (Internet Computer SDK)
+3. **npm** 
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/obiajulu-gif/chainmove.git
+   cd chainmove
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. **Set up environment variables**:
+
+   Create a `.env.local` file in the `frontend` directory with the following contents:
+
+   ```plaintext
+   NEXT_PUBLIC_IC_HOST_URL=https://ic0.app
+   NEXT_PUBLIC_TEST_CANISTER_ID=<your_canister_id>
+   NEXT_PUBLIC_INTERNET_IDENTITY_URL=https://identity.ic0.app/#authorize
+   ```
+
+4. **Start the local development server**:
+
+   In one terminal, run the Internet Computer:
+
+   ```bash
+   dfx start --clean
+   ```
+
+   In another terminal, deploy the project:
+
+   ```bash
+   dfx deploy
+   ```
+
+5. **Run the frontend**:
+
+   ```bash
+   npm run dev
+   ```
+
+Visit `http://localhost:3000` in your browser to access ChainMove.
+
+## 💡 Smart Contract Overview
+
+The ChainMove backend is implemented in **Motoko** and handles the following tasks:
+
+1. **Ride Booking**: The contract logs ride details, including driver, passenger, and fare, and releases an initial payment (10%) to the driver upon booking.
+2. **Ride Completion**: When the passenger confirms the ride completion, the contract transfers the remaining 90% of the fare to the driver.
+3. **Driver Withdrawal**: Drivers can withdraw their accumulated earnings from completed rides.
+
+### Motoko Contract Code Snippet
+
+Here's a brief look at the core logic for ride booking and payments:
+
+```motoko
+actor BlockRide {
+  type Ride = { passenger: Principal; driver: Principal; fare: Nat; status: Text };
+  stable var rides : [Nat : Ride] = [];
+  stable var driverBalances : [Principal : Nat] = [];
+
+  public shared({caller}) func bookRide(driver: Principal, fare: Nat) : async Nat {
+    let initialPayment = fare / 10;
+    driverBalances[driver] := driverBalances.get(driver, Nat(0)) + initialPayment;
+    let rideId = Nat(rides.size());
+    rides[rideId] := { passenger = caller; driver = driver; fare = fare; status = "Booked" };
+    return rideId;
+  }
+
+  public shared({caller}) func completeRide(rideId: Nat) : async Text {
+    let ride = rides[rideId];
+    let remainingPayment = ride.fare - (ride.fare / 10);
+    driverBalances[ride.driver] := driverBalances.get(ride.driver, Nat(0)) + remainingPayment;
+    rides[rideId].status := "Completed";
+    return "Ride completed, payment transferred.";
+  }
+}
 ```
 
-Get environment values:
+> This contract enforces ChainMove’s unique 10/90 payment split to reward drivers upfront and protect passenger funds until the ride is completed.
 
-```bash
-# Create all canisters
-dfx canister create --all
+## 🔒 Authentication with Internet Identity
 
-# Get backend canister id
-dfx canister id test
+Internet Identity is used to authenticate both drivers and passengers on ChainMove. This integration ensures that user sessions are secure, decentralized, and managed entirely on the Internet Computer blockchain.
 
-# Get internet-identity canister id
-dfx canister id internet-identity
+1. **Login**: Internet Identity prompts users to authenticate when they access the platform.
+2. **Session Management**: Once logged in, users can access their profiles, book rides, and manage their transactions.
 
-# Get your Codespace name
-echo $CODESPACE_NAME
-```
+## 📱 Screenshots
 
-Replace values in the `frontend/.env` file:
+### Home Page
+![Home Page](./frontend/public/images/landingpage.png)
 
-```bash
-# Replace YOUR_CODESPACE_NAME with your Codespace name
-NEXT_PUBLIC_IC_HOST_URL=https://YOUR_CODESPACE_NAME-4943.app.github.dev/
-# Replace YOUR_TEST_CANISTER_ID with your test canister id
-NEXT_PUBLIC_TEST_CANISTER_ID=YOUR_TEST_CANISTER_ID
-# Replace YOUR_INTERNET_IDENTITY_CANISTER_ID with your internet-identity canister id
-NEXT_PUBLIC_INTERNET_IDENTITY_URL=https://YOUR_CODESPACE_NAME-4943.app.github.dev/?canisterId=YOUR_INTERNET_COMPUTER_CANISTER_ID
-```
+### Ride Booking Page
+![Ride Booking](./public/images/ride.png)
 
-Generate did files:
+### Confirmation Page
+![Confirmation Page](./public/images/confirmation.png)
 
-```bash
-dfx generate test
-```
+## 🤝 Team Members
 
-Deploy your canisters:
+Meet the talented team behind ChainMove:
 
-```bash
-dfx deploy
-```
+- **Emmanuel Okoye** – *Team lead and Full Stack Developer*: Developed the Next.js frontend and implemented responsive UI components.
+- **Damian Olebuezie** – *Lead Blockchain Developer*: Spearheaded the development of ChainMove's Motoko smart contracts, ensuring seamless and secure transaction flows.
+- **Victoria Nwogu** – *Product Manager*: Managed project timelines and feature planning, ensuring ChainMove meets user needs effectively.
+- **David Emulo** – *UI/UX Designer*: Designed an intuitive user experience, from ride booking to payment confirmation, and crafted all visual assets.
 
-You will receive a result similar to the following (ids could be different four you):
+## 🤝 Contributing
 
-```bash
-URLs:
-  Frontend canister via browser
-    frontend:
-      - http://127.0.0.1:4943/?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai
-      - http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943/
-    internet-identity:
-      - http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
-      - http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943/
-  Backend canister via Candid interface:
-    internet-identity: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bd3sg-teaaa-aaaaa-qaaba-cai
-    test: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=be2us-64aaa-aaaaa-qaabq-cai
-```
+We welcome contributions to make ChainMove even better! Please fork the repository and submit a pull request, or reach out if you have ideas to improve the project.
 
-To interact with the frontend the url can be obtained as follows:
+## 📝 License
 
-```bash
-echo https://$CODESPACE_NAME-4943.app.github.dev/?canisterId=$(dfx canister id frontend)
-```
+This project is licensed under the MIT License.
 
-### Manual Setup
+---
 
-Ensure the following are installed on your system:
-
-- [Node.js](https://nodejs.org/en/) `>= 21`
-- [DFX](https://internetcomputer.org/docs/current/developer-docs/build/install-upgrade-remove) `>= 0.20.1`
-
-Clone the project
-
-```bash
-  git clone https://github.com/adrian-d-hidalgo/motoko-nextjs.git
-```
-
-Go to the project directory
-
-```bash
-  cd motoko-nextjs
-```
-
-Install dependencies
-
-```bash
-npm install
-```
-
-Create a .env file:
-
-```bash
-cp frontend/.env-example frontend/.env
-```
-
-Start a ICP local replica:
-
-```bash
-dfx start --background --clean
-```
-
-Get your canister ids:
-
-```bash
-# Create canisters
-dfx canister create --all
-
-# Get backend canister id
-dfx canister id test
-
-# Get internet-identity canister id
-dfx canister id internet-identity
-```
-
-Replace values in the .env file:
-
-```bash
-# Replace port if needed
-NEXT_PUBLIC_IC_HOST_URL=http://localhost:4943
-# Replace YOUR_TEST_CANISTER_ID with your test canister id
-NEXT_PUBLIC_TEST_CANISTER_ID=YOUR_TEST_CANISTER_ID
-# Replace YOUR_INTERNET_IDENTITY_CANISTER_ID with your internet-identity canister id
-NEXT_PUBLIC_INTERNET_IDENTITY_URL=http://YOUR_INTERNET_IDENTITY_CANISTER_ID.localhost:4943
-```
-
-Generate did files:
-
-```bash
-dfx generate test
-```
-
-Deploy your canisters:
-
-```bash
-dfx deploy
-```
-
-You will receive a result similar to the following (ids could be different four you):
-
-```bash
-URLs:
-  Frontend canister via browser
-    frontend:
-      - http://127.0.0.1:4943/?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai
-      - http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:4943/
-    internet-identity:
-      - http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
-      - http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943/
-  Backend canister via Candid interface:
-    internet-identity: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=bd3sg-teaaa-aaaaa-qaaba-cai
-    test: http://127.0.0.1:4943/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai&id=be2us-64aaa-aaaaa-qaabq-cai
-```
-
-Open your web browser and enter the Frontend URL to view the web application in action.
-
-## Test frontend without deploy to ICP Replica
-
-Comment the next line into `frontend/next.config.mjs` file:
-
-```javascript
-// output: "export",
-```
-
-Then, navitate to `frontend` folder:
-
-`cd frontend`
-
-Run the following script:
-
-`npm run dev`
+ChainMove is poised to transform the ride-sharing industry by putting control in the hands of the users. Join us in redefining decentralized transport on the Internet Computer!
