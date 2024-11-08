@@ -39,13 +39,13 @@ const NavbarLanding = () => {
 
         {/* Menu Links */}
         <div className="hidden md:flex space-x-8 text-white">
-          <Link href="/" as="/index.html">
+          <Link href="/" >
             Home
           </Link>
-          <Link href="https://www.notion.so/12f385cd77cc8041a9fefc57981d5ea8?pvs=4" as="/about-us.html">
+          <Link href="https://www.notion.so/12f385cd77cc8041a9fefc57981d5ea8?pvs=4" >
             About Us
           </Link>
-          <Link href="/about" as="/about.html">
+          <Link href="/about" >
             Contact Us
           </Link>
         </div>
@@ -66,7 +66,7 @@ const NavbarLanding = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-gray-800 text-white">
-          <Link href="/" as="/index.html" onClick={toggleMenu} className="block px-4 py-2">
+          <Link href="/" onClick={toggleMenu} className="block px-4 py-2">
             Home
           </Link>
           <Link
