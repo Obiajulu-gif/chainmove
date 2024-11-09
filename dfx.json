@@ -8,8 +8,9 @@
       "declarations": {
         "node_compatibility": true,
         "output": "frontend/src/declarations/test"
-      },
-       "ChainMoveContract": {
+      }
+    },
+    "ChainMoveContract": {
       "type": "motoko",
       "main": "backend/ChainMoveContract.mo",
       "declarations": {
