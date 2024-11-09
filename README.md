@@ -146,7 +146,7 @@ Internet Identity is used to authenticate both drivers and passengers on ChainMo
 ## 📱 Screenshots
 
 ### Phone View Page
-![Ride Booking](./public/images/landingpagephone.png)
+![Ride Booking](./frontend/public/images/landingpagephone.png)
 
 ### Register Page
 ![Register page](./frontend/public/images/registerpage.png)

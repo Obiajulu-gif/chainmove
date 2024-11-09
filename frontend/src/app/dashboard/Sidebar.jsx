@@ -45,7 +45,8 @@ const Sidebar = () => {
 
   return (
     <motion.div
-      className="bg-gray-900 text-white h-screen p-4 flex flex-col justify-between fixed md:relative z-50 shadow-lg"
+      className="bg-gray-900 text-white max-h-screen p-4 flex flex-col justify-between fixed md:relative z-50 shadow-lg overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thumb-rounded"
+      style={{ height: "100vh" }}
       animate={isSidebarOpen ? "open" : "closed"}
       variants={sidebarVariants}>
       {/* Sidebar Header */}

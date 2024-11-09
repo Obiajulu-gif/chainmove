@@ -24,7 +24,7 @@ const NavbarLanding = () => {
     // Reset isLoading after a short delay to simulate completion
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // Adjust the timeout as needed
+    }, 2000); // Adjust the timeout as needed
   };
 
   const navigateToHome = () => {
