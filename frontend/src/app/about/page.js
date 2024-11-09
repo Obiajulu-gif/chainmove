@@ -6,7 +6,7 @@ import Image from "next/image";
 // Define a sample team members list
 const teamMembers = [
 	{
-		name: "Okoye Emmanuel Obiajulu",
+		name: "Okoye Emmanuel",
 		title: "Project Lead / FullStack Developer",
 		bio: "A seasoned developer with a passion for blockchain technology and creating seamless user experiences.",
 		image: "/images/emmanuel.jpeg", // Replace with the actual image path
@@ -24,7 +24,7 @@ const teamMembers = [
 		image: "/images/david.jpeg", // Replace with the actual image path
 	},
 	{
-		name: "Olebuezie Chibuzor Damian",
+		name: "Olebuezie Damian",
 		title: "Smart Contract Developer",
 		bio: "Bringing secure and efficient smart contracts to life, specializing in blockchain technology.",
 		image: "/images/damian.jpeg", // Replace with the actual image path
@@ -40,11 +40,11 @@ const AboutSection = () => {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.6 }}
 			>
-				<h2 className="text-4xl font-bold">About BlockRide</h2>
+				<h2 className="text-4xl font-bold">About ChainMove</h2>
 				<p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-					BlockRide is a revolutionary blockchain-powered platform designed to
+					ChainMove is a revolutionary blockchain-powered platform designed to
 					bring transparency and security to mobility services. Built with
-					Next.js and Lisk Blockchain, BlockRide connects drivers, riders, and
+					Next.js and Internet Computer Blockchain, ChainMove connects drivers, riders, and
 					investors in a decentralized, trustworthy environment.
 				</p>
 			</motion.div>
