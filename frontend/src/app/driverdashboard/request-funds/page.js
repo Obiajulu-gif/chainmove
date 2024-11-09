@@ -31,7 +31,7 @@ const RequestFunds = () => {
 				<div className="w-1/2 flex justify-center items-center">
 					<div className="relative w-full h-64 bg-gray-700 rounded-lg overflow-hidden">
 						<Image
-							src="/images/requestfund.png" // Replace with the actual image path
+							src="/images/loan.png" // Replace with the actual image path
 							alt="Funding Illustration"
 							layout="fill"
 							objectFit="cover"
@@ -43,7 +43,7 @@ const RequestFunds = () => {
 				{/* Right Side - Funding Information */}
 				<div className="w-1/2 pl-8">
 					<h2 className="text-4xl font-bold mb-4">
-						Welcome to BlockRide Funding Portal!
+						Welcome to ChainMove Funding Portal!
 					</h2>
 					<p className="text-gray-400 mb-6">
 						<strong>Choose Your Purpose:</strong> Select whether you need funds
@@ -56,7 +56,7 @@ const RequestFunds = () => {
 					</p>
 					<p className="text-gray-400 mb-6">
 						<strong>Start Earning and Repay as You Go:</strong> Use the funds to
-						fuel your work on BlockRide, and repay investors seamlessly as you
+						fuel your work on ChainMove, and repay investors seamlessly as you
 						earn on the platform.
 					</p>
 					<button

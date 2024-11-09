@@ -18,7 +18,7 @@ import InvestorSidebar from "./investordashboard/InvestorSidebar";
 
 // src/app/LayoutHandler.js
 
-const CANISTER_ID = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; // Replace with your actual canister ID
+const CANISTER_ID = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; 
 
 // Initialize client for ICP Connect
 const client = Client.create({
