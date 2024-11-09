@@ -2,7 +2,7 @@
 
 Welcome to **ChainMove**, a decentralized, blockchain-powered transportation platform that brings transparency, efficiency, and security to mobility services. Built on the **Internet Computer**, ChainMove leverages blockchain technology to create a seamless and trusted experience for drivers and passengers alike, ensuring secure payments, driver incentives, and ride transparency.
 
-> **Hackathon Project**: Created for the Internet Computer Hackathon 2023. ChainMove reimagines ride-sharing with decentralization and transparency at its core. 🚀
+> **Hackathon Project**: Created for the Internet Computer Hackathon 2024. ChainMove reimagines ride-sharing with decentralization and transparency at its core. 🚀
 
 ![Home Page](./frontend/public/images/landingpage.png)
 
