@@ -115,7 +115,7 @@ const Sidebar = () => {
             {isSidebarOpen && <span className="text-lg font-medium">Settings</span>}
           </div>
         </Link>
-        <Link href="/dashboard/logout" passHref>
+        <Link href="/" passHref>
           <div className="flex items-center space-x-4 p-2 rounded-lg hover:bg-gray-800 transition-colors">
             <FaSignOutAlt className="text-2xl" />
             {isSidebarOpen && <span className="text-lg font-medium">Log Out</span>}
