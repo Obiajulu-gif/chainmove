@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
 
 import BookRide from "./BookRide";
@@ -11,14 +11,6 @@ const Overview = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  useEffect(() => {
-    // Redirect to /dashboard if no account address (mock)
-    const acc = null; // Replace with actual account logic if needed
-    if (!acc) {
-      router.push("/dashboard");
-    }
-  }, [router]);
 
   const isRegistered = false; // Mock driver registration status
   const isCheckingRegistration = false; // Mock loading state for registration check
@@ -32,7 +24,6 @@ const Overview = () => {
   };
 
   const handleRegisterDriver = async () => {
-    // Mock driver registration function
     setShowSuccessModal(true);
   };
 
@@ -113,7 +104,11 @@ const Overview = () => {
           <div className="flex items-center justify-between">
             <p className="text-sm text-gray-500">Review time: 5mins - 3 working days</p>
             <button
-              onClick={handleRegisterDriver}
+              onClick={() => {
+                handleRegisterDriver();
+                setStep(1); // Reset to step 1 if you want
+                router.push("/driverdashboard/overview");
+              }}
               disabled={isRegistered || isCheckingRegistration}
               className={`${
                 isRegistered ? "bg-gray-500 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600"

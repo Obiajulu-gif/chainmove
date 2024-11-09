@@ -28,7 +28,7 @@ const Overview = () => {
 		<div className="p-8 bg-gray-900 text-white min-h-screen">
 			{/* Header */}
 			<div className="flex justify-between items-center mb-8">
-				<h1 className="text-2xl font-semibold">Welcome, Emmanuel</h1>
+				<h1 className="text-2xl font-semibold">Hi Emmanuel, Welcome to your Investor Dashboard</h1>
 				<div className="flex items-center space-x-2">
 					<span className="text-gray-400">Currency</span>
 					<div className="relative inline-flex items-center bg-gray-800 rounded-md px-4 py-2">
