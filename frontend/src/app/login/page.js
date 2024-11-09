@@ -1,38 +1,35 @@
 "use client";
 
+import { AuthClient } from "@dfinity/auth-client";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaEnvelope } from "react-icons/fa";
 
 const LoginPage = () => {
   const router = useRouter();
+  const [principal, setPrincipal] = useState(null); // State for storing principal after II login
 
-  // State to hold form input values
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState(""); // State for error messages
+  const handleConnectWallet = async () => {
+    const authClient = await AuthClient.create();
+    await authClient.login({
+      identityProvider: "https://identity.ic0.app", // URL of Internet Identity
+      onSuccess: () => {
+        const userPrincipal = authClient.getIdentity().getPrincipal().toString();
+        setPrincipal(userPrincipal);
 
-  const handleLogin = () => {
-    // Ensure email is provided
-    if (!email) {
-      setError("Email is required!");
-      return;
-    }
+        // Save to local storage and log the principal
+        localStorage.setItem("userPrincipal", userPrincipal);
+        console.log("User Principal:", userPrincipal);
 
-    // Reset error if fields are valid
-    setError("");
-
-    console.log("Login Data:", { email });
-
-    // Navigate to the dashboard route
-    router.push("/dashboard");
+        router.push("/dashboard");
+      },
+    });
   };
 
   return (
     <div className="flex min-h-screen bg-gray-900">
       {/* Left Side - Image with Overlay Card */}
-      <div className="relative w-1/2 hidden lg:block">
+      <div className="relative w-1/2 hidden md:block">
         <Image
           src="/images/login.png"
           alt="Become a Driver"
@@ -52,49 +49,23 @@ const LoginPage = () => {
         </div>
       </div>
 
-      {/* Right Side - Login Form */}
-      <div className="flex w-full lg:w-1/2 items-center justify-center p-10">
+      {/* Right Side - Connect Wallet */}
+      <div className="flex w-full text-center lg:w-1/2 items-center justify-center p-10">
         <div className="max-w-md w-full space-y-6">
-          <h2 className="text-2xl font-bold text-white">Login with your email</h2>
-          <p className="text-gray-400">Login to begin your journey</p>
-
-          {/* Error Message */}
-          {error && <div className="text-red-500">{error}</div>}
-
-          {/* Login Form */}
-          <div className="space-y-4">
-            <div className="relative">
-              <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 p-3 rounded-md bg-gray-800 text-white placeholder-gray-500"
-              />
-            </div>
-
-            {/* Proceed Button */}
-            <button
-              onClick={handleLogin} // Call handleLogin on click
-              className="w-full bg-orange-500 text-white font-semibold py-3 rounded-md hover:bg-orange-600 transition duration-300">
-              Proceed
-            </button>
-          </div>
-
-          {/* Divider */}
-          <div className="flex items-center space-x-2 text-gray-400">
-            <hr className="w-full border-gray-600" />
-            <span>Or</span>
-            <hr className="w-full border-gray-600" />
-          </div>
-
-          <p className="text-center text-gray-400">
-            Don't have an account?{" "}
-            <Link href="/register" className="text-orange-500 hover:underline">
-              Register here
-            </Link>
+          <h2 className="text-2xl font-bold text-white">Connect with Internet Identity</h2>
+          <p className="text-gray-400">
+            Verify your Identity with Internet Computer Protocol to begin your journey
           </p>
+
+          {/* Connect Wallet Button */}
+          <button
+            onClick={handleConnectWallet}
+            className="w-full bg-orange-600 text-white font-semibold py-3 rounded-md hover:bg-orange-500 transition duration-300">
+            Verify Identity
+          </button>
+
+          {/* Display principal if authenticated */}
+          {principal && <div className="text-green-500 text-center mt-4">Connected as: {principal}</div>}
         </div>
       </div>
     </div>

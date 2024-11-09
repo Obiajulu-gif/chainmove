@@ -28,3 +28,73 @@ Stopping the replica...
 Stopped.
 Stopping icx-proxy...
 Stopped.
+
+added 509 packages, and audited 511 packages in 36s
+
+153 packages are looking for funding
+  run `npm fund` for details
+
+2 vulnerabilities (1 moderate, 1 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm notice 
+npm notice New minor version of npm available! 10.2.4 -> 10.9.0
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.9.0>
+npm notice Run `npm install -g npm@10.9.0` to update!
+npm notice 
+Running dfx start for version 0.20.1
+Using the default definition for the 'local' shared network because /root/.config/dfx/networks.json does not exist.
+Initialized replica.
+Dashboard: http://localhost:34189/_/dashboard
+
+added 509 packages, and audited 511 packages in 26s
+
+153 packages are looking for funding
+  run `npm fund` for details
+
+2 vulnerabilities (1 moderate, 1 high)
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+npm notice 
+npm notice New minor version of npm available! 10.2.4 -> 10.9.0
+npm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.9.0>
+npm notice Run `npm install -g npm@10.9.0` to update!
+npm notice 
+Running dfx start for version 0.20.1
+Using the default definition for the 'local' shared network because /root/.config/dfx/networks.json does not exist.
+Initialized replica.
+Dashboard: http://localhost:41829/_/dashboard
+[2m2024-11-10T01:10:15.290269Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:10:15.290831Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m2 ms
+[2m2024-11-10T01:10:16.684394Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:10:16.684482Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:10:19.167627Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:10:19.167744Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:10:31.536159Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:10:31.536317Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:11:59.427933Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:11:59.428026Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:12:18.379537Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:12:18.379648Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T01:12:18.604896Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:12:18.605048Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T01:12:23.182468Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:12:23.182559Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T01:12:31.252492Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:12:31.252607Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:16:51.749788Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:16:51.749961Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m3 ms
+[2m2024-11-10T01:21:43.027416Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:21:43.027558Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:22:26.651513Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:22:26.651643Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:22:26.863257Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:22:26.863360Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T01:22:32.140989Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:22:32.141090Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
