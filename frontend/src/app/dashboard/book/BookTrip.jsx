@@ -18,7 +18,7 @@ const BookTrip = () => {
 	};
 
 	return (
-		<div className="p-8 bg-gray-900 min-h-screen text-white flex flex-col items-center">
+		<div className="p-2 bg-gray-900 min-h-screen text-white flex flex-col items-center">
 			<motion.h1
 				initial={{ opacity: 0, y: -20 }}
 				animate={{
@@ -42,7 +42,7 @@ const BookTrip = () => {
 				Select An Option
 			</motion.h2>
 
-			<div className="flex flex-col md:flex-row justify-center gap-12">
+			<div className="flex flex-col md:flex-row justify-center gap-10">
 				{/* Solo-Trip Card */}
 				<motion.div
 					variants={cardVariants}
@@ -52,7 +52,7 @@ const BookTrip = () => {
 				>
 					<div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
 						<Image
-							src="/images/solo.png"
+							src="/images/soloride.png"
 							alt="Solo Trip"
 							layout="fill"
 							objectFit="cover"
@@ -83,7 +83,7 @@ const BookTrip = () => {
 				>
 					<div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
 						<Image
-							src="/images/shared.png"
+							src="/images/sharedride.png"
 							alt="Shared Ride"
 							layout="fill"
 							objectFit="cover"
@@ -99,7 +99,7 @@ const BookTrip = () => {
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 						onClick={() => router.push("/dashboard/book/shared-ride")}
-						className="bg-orange-500 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300"
+						className="bg-orange-500 text-white py-1 px-8 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300"
 					>
 						Select
 					</motion.button>

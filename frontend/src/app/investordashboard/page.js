@@ -45,7 +45,7 @@ const Overview = () => {
 					<div className="w-1/2 flex justify-center items-center">
 						<Image
 							src="/images/investor.png" // Replace with the actual imported image path
-							alt="BlockRide Driver"
+							alt="ChainMove Driver"
 							className="rounded-lg"
 							width={600}
 							height={600}
@@ -55,10 +55,10 @@ const Overview = () => {
 					{/* Right Side - Welcome Text */}
 					<div className="w-1/2 pl-8">
 						<h2 className="text-4xl font-bold mb-4 leading-snug">
-							Welcome to BlockRide <br /> For Investor!
+							Welcome to ChainMove <br /> For Investor!
 						</h2>
 						<p className="text-gray-400 mb-6 leading-relaxed">
-							As a BlockRide Investor, you have the freedom to earn from every
+							As a ChainMove Investor, you have the freedom to earn from every
 							Funding and investment while taking full advantage of our
 							blockchain-powered platform.
 						</p>

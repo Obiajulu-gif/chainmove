@@ -4,27 +4,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-// Import for navigation
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const NavbarLanding = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter(); // Initialize router
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const navigateToSign = () => {
-    router.push("/register"); // Navigate to register page
+    setIsLoading(true);
     setIsOpen(false); // Close the menu on navigation
+    router.push("/onboard");
+
+    // Reset isLoading after a short delay to simulate completion
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Adjust the timeout as needed
+  };
+
+  const navigateToHome = () => {
+    router.push("/"); // Navigate to the landing page
   };
 
   return (
     <nav className="bg-gradient-to-r from-gray-800 to-gray-900 p-4 fixed w-full z-20">
       <div className="container mx-auto flex items-center justify-between">
-        {/* Logo and Name */}
-        <div className="flex items-center">
+        {/* Logo and Name - Wrap in a div with onClick for navigation */}
+        <div className="flex items-center cursor-pointer" onClick={navigateToHome}>
           <Image
             src="/images/blockridelogo.svg"
             alt="ChainMove Logo"
@@ -39,22 +50,22 @@ const NavbarLanding = () => {
 
         {/* Menu Links */}
         <div className="hidden md:flex space-x-8 text-white">
-          <Link href="/" >
-            Home
-          </Link>
-          <Link href="https://www.notion.so/12f385cd77cc8041a9fefc57981d5ea8?pvs=4" >
-            About Us
-          </Link>
-          <Link href="/about" >
-            Contact Us
-          </Link>
+          <Link href="/">Home</Link>
+          <Link href="https://www.notion.so/12f385cd77cc8041a9fefc57981d5ea8?pvs=4">About Us</Link>
+          <Link href="/about">Contact Us</Link>
         </div>
 
         {/* Start a Journey Button */}
         <button
           onClick={navigateToSign}
-          className="hidden md:block bg-orange-500 text-white px-4 py-2 rounded-lg animate-bounce">
-          Start a journey
+          className={`hidden animate-bounce md:block px-4 py-2 rounded-lg text-white transition duration-300 ease-in-out ${
+            isLoading
+              ? "bg-gray-500 cursor-wait animate-pulse" // Loading state styles
+              : "bg-orange-500 hover:bg-orange-600" // Normal styles
+          }`}
+          disabled={isLoading} // Disable the button while loading
+        >
+          {isLoading ? "Starting..." : "Start a journey"}
         </button>
 
         {/* Hamburger Menu Icon */}
@@ -71,12 +82,11 @@ const NavbarLanding = () => {
           </Link>
           <Link
             href="https://www.notion.so/12f385cd77cc8041a9fefc57981d5ea8?pvs=4"
-            as="/about-us.html"
             onClick={toggleMenu}
             className="block px-4 py-2">
             About Us
           </Link>
-          <Link href="/about" as="/about.html" onClick={toggleMenu} className="block px-4 py-2">
+          <Link href="/about" onClick={toggleMenu} className="block px-4 py-2">
             Contact Us
           </Link>
           <button

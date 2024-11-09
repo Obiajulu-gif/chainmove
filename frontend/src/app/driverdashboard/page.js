@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaDollarSign } from "react-icons/fa";
 
-import BookRide from "./BookRide";
-
 const Overview = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -31,7 +29,8 @@ const Overview = () => {
     <div className="p-8 bg-gray-900 text-white min-h-screen">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-semibold">Welcome, David</h1>
+        <h1 className="text-2xl font-semibold">Hello Emmanuel,
+</h1>
         <div className="flex items-center space-x-4">
           <div className="text-sm">
             {isCheckingRegistration ? (
@@ -72,10 +71,10 @@ const Overview = () => {
           </div>
           <div className="w-1/2 pl-8">
             <h2 className="text-4xl font-bold mb-4 leading-snug">
-              Welcome to BlockRide <br /> For Drivers!
+              Welcome to ChainMove <br /> For Drivers!
             </h2>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              As a BlockRide driver, you have the freedom to earn from every trip while taking full advantage
+              As a ChainMove driver, you have the freedom to earn from every trip while taking full advantage
               of our blockchain-powered platform.
             </p>
             <div className="flex space-x-2 mb-4">
@@ -141,7 +140,6 @@ const Overview = () => {
         </div>
       )}
 
-      <BookRide />
     </div>
   );
 };
