@@ -48,7 +48,7 @@ const BookTrip = () => {
 					variants={cardVariants}
 					initial="hidden"
 					animate="visible"
-					className="bg-gray-800 p-8 rounded-lg w-full md:w-1/3 flex flex-col items-center shadow-lg transform hover:scale-105 transition-transform duration-300"
+					className="bg-gray-800 p-4 rounded-lg w-full md:w-1/3 flex flex-col items-center shadow-lg transform hover:scale-105 transition-transform duration-300"
 				>
 					<div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
 						<Image
@@ -79,7 +79,7 @@ const BookTrip = () => {
 					variants={cardVariants}
 					initial="hidden"
 					animate="visible"
-					className="bg-gray-800 p-8 rounded-lg w-full md:w-1/3 flex flex-col items-center shadow-lg transform hover:scale-105 transition-transform duration-300"
+					className="bg-gray-800 p-4 rounded-lg w-full md:w-1/3 flex flex-col items-center shadow-lg transform hover:scale-105 transition-transform duration-300"
 				>
 					<div className="relative w-full h-48 rounded-lg overflow-hidden mb-4">
 						<Image
@@ -99,7 +99,7 @@ const BookTrip = () => {
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 						onClick={() => router.push("/dashboard/book/shared-ride")}
-						className="bg-orange-500 text-white py-1 px-8 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300"
+						className="bg-orange-500 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-orange-600 transition duration-300"
 					>
 						Select
 					</motion.button>
