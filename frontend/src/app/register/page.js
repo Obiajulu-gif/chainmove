@@ -3,35 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaEnvelope, FaUserAlt } from "react-icons/fa";
-
-import { useAuth } from "@bundly/ares-react";
-
-// Authentication hook
 
 const RegisterPage = () => {
   const router = useRouter();
-  const { login } = useAuth(); // Authentication function
 
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(""); // State for error messages
 
-  const handleRegister = async () => {
+  const handleRegister = () => {
     if (!fullName || !username || !email) {
       setError("All fields are required!");
       return;
     }
     setError("");
 
-    try {
-      await login(); // Trigger Internet Identity login
-      router.push("/dashboard"); // Navigate to dashboard after login
-    } catch (error) {
-      setError("Authentication failed. Please try again.");
-    }
+    // Navigate to the dashboard directly after completing registration form
+    router.push("/dashboard");
   };
 
   return (
