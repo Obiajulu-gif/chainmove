@@ -98,3 +98,13 @@ Dashboard: http://localhost:41829/_/dashboard
 [2m2024-11-10T01:22:26.863360Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
 [2m2024-11-10T01:22:32.140989Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
 [2m2024-11-10T01:22:32.141090Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T01:37:23.558250Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:37:23.558779Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T01:37:23.765128Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T01:37:23.765200Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m0 ms
+[2m2024-11-10T02:26:11.489742Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T02:26:11.490362Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T02:26:13.450278Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T02:26:13.450476Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
+[2m2024-11-10T02:26:16.890966Z[0m [33m WARN[0m [2micx_proxy_dev::proxy::agent[0m[2m:[0m Replica Error
+[2m2024-11-10T02:26:16.891094Z[0m [31mERROR[0m [2mtower_http::trace::on_failure[0m[2m:[0m response failed [3mclassification[0m[2m=[0mStatus code: 502 Bad Gateway [3mlatency[0m[2m=[0m1 ms
