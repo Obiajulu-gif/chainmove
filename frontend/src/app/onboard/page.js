@@ -9,7 +9,7 @@ const Onboard = () => {
 
   // Navigate to the register page with a role parameter
   const handleNavigation = () => {
-    router.push(`/register`);
+    router.push(`/login`);
   };
 
   return (
@@ -70,7 +70,7 @@ const Onboard = () => {
         {/* Register Button */}
         <motion.button
           className="mt-10 px-6 py-3 bg-orange-500 rounded-full text-white font-semibold hover:bg-orange-600 transition duration-300"
-          onClick={() => router.push("/register")}
+          onClick={() => router.push("/login")}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}>

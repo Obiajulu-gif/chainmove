@@ -60,8 +60,8 @@ const NavbarLanding = () => {
           onClick={navigateToSign}
           className={`hidden animate-bounce md:block px-4 py-2 rounded-lg text-white transition duration-300 ease-in-out ${
             isLoading
-              ? "bg-gray-500 cursor-wait animate-pulse" // Loading state styles
-              : "bg-orange-500 hover:bg-orange-600" // Normal styles
+              ? "bg-orange-500 cursor-wait animate-pulse" // Loading state styles
+              : "bg-orange-600 hover:bg-orange-600" // Normal styles
           }`}
           disabled={isLoading} // Disable the button while loading
         >
