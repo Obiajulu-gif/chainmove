@@ -5,8 +5,7 @@ import React, { useEffect, useState } from "react";
 
 
 
-import { idlFactory } from "@app/declarations/test/ChainMoveContract.did.js";
-
+import { idlFactory } from "frontend/frontend/src/declarations/test/ChainMoveContract.did.js";
 
 // Move actor creation inside a try-catch and add error handling
 const createChainMoveContractActor = () => {

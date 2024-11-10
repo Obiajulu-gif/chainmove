@@ -74,7 +74,7 @@ actor class ChainMoveContract() {
         userName : Text;
         driverName : Text;
     };
-
+    
     private var rideCount : Nat = 0;
     private var registeredDrivers : [var Principal] = [var];
 
