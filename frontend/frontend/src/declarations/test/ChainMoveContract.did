@@ -1,0 +1,68 @@
+type UserProfile = 
+ record {
+   email: text;
+   fullName: text;
+   phoneNumber: text;
+   username: text;
+ };
+type SharedRide = 
+ record {
+   bookedAt: int;
+   completedAt: int;
+   destination: text;
+   driver: principal;
+   driverName: text;
+   fare: nat;
+   isCancelled: bool;
+   isCompleted: bool;
+   rideId: nat;
+   user: principal;
+   userName: text;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type DriverProfile = 
+ record {
+   email: text;
+   fullName: text;
+   phoneNumber: text;
+   username: text;
+ };
+type DestinationInfo = 
+ record {
+   destinationId: nat;
+   driverName: text;
+   driverPrincipal: principal;
+   fare: nat;
+   isAvailable: bool;
+   location: text;
+ };
+type ChainMoveContract = 
+ service {
+   addDestination: (text, nat) -> (Result);
+   bookRide: (principal, nat) -> (Result_1);
+   cancelRide: (nat) -> (Result);
+   completeRide: (nat) -> (Result);
+   getAllAvailableDestinations: () -> (vec DestinationInfo) query;
+   getAllRegisteredUsers: () -> (vec UserProfile) query;
+   getDriverActiveRides: () -> (vec SharedRide);
+   getDriverCompletedRides: () -> (vec SharedRide);
+   getDriverProfile: (principal) -> (opt DriverProfile) query;
+   getUserActiveRides: () -> (vec SharedRide);
+   getUserCancelledRides: () -> (vec SharedRide);
+   getUserCompletedRides: () -> (vec SharedRide);
+   getUserProfile: (principal) -> (opt UserProfile) query;
+   isRegisteredDriver: (principal) -> (bool) query;
+   isRegisteredUser: (principal) -> (bool) query;
+   registerDriver: (text, text, text, text) -> (Result);
+   registerUser: (text, text, text, text) -> (Result);
+ };
+service : () -> ChainMoveContract
