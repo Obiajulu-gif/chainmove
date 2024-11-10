@@ -16,6 +16,11 @@ const LoginPage = () => {
       onSuccess: () => {
         const userPrincipal = authClient.getIdentity().getPrincipal().toString();
         setPrincipal(userPrincipal);
+
+        // Save to local storage and log the principal
+        localStorage.setItem("userPrincipal", userPrincipal);
+        console.log("User Principal:", userPrincipal);
+
         router.push("/dashboard");
       },
     });
@@ -45,7 +50,7 @@ const LoginPage = () => {
       </div>
 
       {/* Right Side - Connect Wallet */}
-      <div className="flex w-full  text-center lg:w-1/2 items-center justify-center p-10">
+      <div className="flex w-full text-center lg:w-1/2 items-center justify-center p-10">
         <div className="max-w-md w-full space-y-6">
           <h2 className="text-2xl font-bold text-white">Connect with Internet Identity</h2>
           <p className="text-gray-400">

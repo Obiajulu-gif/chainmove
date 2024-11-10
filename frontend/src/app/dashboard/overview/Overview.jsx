@@ -1,9 +1,10 @@
 // components/dashboard/Overview.js
 import React from "react";
+
 import BadgeAndTasks from "./BadgeAndTasks";
-import WalletInfo from "./WalletInfo";
-import VideoTutorial from "./VideoTutorial";
 import TripHistory from "./TripHistory";
+import VideoTutorial from "./VideoTutorial";
+import WalletInfo from "./WalletInfo";
 
 const Overview = () => {
   return (
