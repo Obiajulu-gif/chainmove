@@ -4,8 +4,12 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+
+
 import { Client, InternetIdentity } from "@bundly/ares-core";
 import { IcpConnectContextProvider } from "@bundly/ares-react";
+
+
 
 import Footer from "./components/Footer";
 import NavbarLanding from "./components/NavbarLanding";
@@ -16,9 +20,17 @@ import DriverSidebar from "./driverdashboard/DriverSidebar";
 import InvestorNavbar from "./investordashboard/InvestorNavbar";
 import InvestorSidebar from "./investordashboard/InvestorSidebar";
 
+
 // src/app/LayoutHandler.js
 
-const CANISTER_ID = "bkyz2-fmaaa-aaaaa-qaaaq-cai"; 
+
+
+// src/app/LayoutHandler.js
+
+
+// src/app/LayoutHandler.js
+
+const CANISTER_ID = "aovwi-4maaa-aaaaa-qaagq-cai"; 
 
 // Initialize client for ICP Connect
 const client = Client.create({
