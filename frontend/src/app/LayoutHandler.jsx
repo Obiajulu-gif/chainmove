@@ -21,15 +21,6 @@ import InvestorNavbar from "./investordashboard/InvestorNavbar";
 import InvestorSidebar from "./investordashboard/InvestorSidebar";
 
 
-// src/app/LayoutHandler.js
-
-
-
-// src/app/LayoutHandler.js
-
-
-// src/app/LayoutHandler.js
-
 const CANISTER_ID = "aovwi-4maaa-aaaaa-qaagq-cai"; 
 
 // Initialize client for ICP Connect
