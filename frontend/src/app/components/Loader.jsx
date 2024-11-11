@@ -1,4 +1,4 @@
-// components/Loader.js
+"use client"
 import React from 'react';
 
 const Loader = () => {

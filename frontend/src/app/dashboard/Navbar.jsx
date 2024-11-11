@@ -1,12 +1,23 @@
-// components/Navbar.js
 "use client";
-import { FaSearch, FaBell, FaWallet } from "react-icons/fa";
-import { MdExpandMore } from "react-icons/md";
+
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FaBell, FaSearch, FaWallet } from "react-icons/fa";
+import { MdExpandMore } from "react-icons/md";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userPrincipal, setUserPrincipal] = useState(null);
+
+  useEffect(() => {
+    // Retrieve userPrincipal from localStorage and format it
+    const principal = localStorage.getItem("userPrincipal");
+    if (principal) {
+      // Format principal to show only first and last few characters
+      const formattedPrincipal = `${principal.slice(0, 5)}...${principal.slice(-5)}`;
+      setUserPrincipal(formattedPrincipal);
+    }
+  }, []);
 
   return (
     <div className="bg-gray-900 px-6 py-4 flex justify-between items-center lg:pl-72">
@@ -43,8 +54,12 @@ const Navbar = () => {
 
       {/* Right Section - Wallet, Notifications, and Profile */}
       <div className="flex items-center space-x-4">
+        {userPrincipal && (
+            <span className="text-white font-medium text-sm bg-orange-700 px-3 py-1 rounded-lg">
+              {userPrincipal}
+            </span>
+          )}
         {/* Connect Wallet Button */}
-        {/* .................we will add it here .................. */}
         <FaWallet className="mr-2" />
 
         {/* Notification Bell with Badge */}
@@ -56,13 +71,16 @@ const Navbar = () => {
         </div>
 
         {/* User Profile */}
-        <Image
-          src="/images/av1.png" // Replace with user's profile image URL
-          alt="User Profile"
-          width={40}
-          height={40}
-          className="rounded-full cursor-pointer"
-        />
+        <div className="flex items-center space-x-2">
+          <Image
+            src="/images/av1.png" // Replace with user's profile image URL if available
+            alt="User Profile"
+            width={40}
+            height={40}
+            className="rounded-full cursor-pointer"
+          />
+          
+        </div>
       </div>
     </div>
   );

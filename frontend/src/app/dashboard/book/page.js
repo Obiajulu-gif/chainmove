@@ -1,4 +1,4 @@
-// app/dashboard/book/page.js
+"use client"
 import BookTrip from "./BookTrip";
 
 export default function BookTripPage() {

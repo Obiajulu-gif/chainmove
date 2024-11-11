@@ -1,4 +1,4 @@
-// components/dashboard/Overview.js
+"use client"
 import React from "react";
 import BadgeAndTasks from "./BadgeAndTasks";
 import WalletInfo from "./WalletInfo";

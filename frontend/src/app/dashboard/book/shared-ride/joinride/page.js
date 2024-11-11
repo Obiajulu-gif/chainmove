@@ -1,4 +1,4 @@
-// app/dashboard/book/shared-trip/results/page.js
+"use client"
 import SharedTripResults from "./SharedTripResults";
 
 export default function SharedTripResultsPage() {

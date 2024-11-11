@@ -1,4 +1,4 @@
-// app/dashboard/book/solo-trip/page.js
+"use client"
 import SharedTrip from "./SharedTrip";
 export default function SharedTripBookingPage() {
 	return <SharedTrip />;
