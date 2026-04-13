@@ -1,11 +1,18 @@
 {
-  "name": "azle-api-rest-nextjs",
+  "name": "chainmove",
   "version": "0.4.0",
+  "description": "ChainMove is an in-development Stellar-aligned mobility payments and driver financing platform.",
+  "license": "MIT",
   "workspaces": [
     "backend",
     "frontend"
   ],
   "keywords": [
+    "stellar",
+    "soroban",
+    "mobility",
+    "payments",
+    "escrow",
     "dfinity",
     "icp",
     "internet computer",
